@@ -25,7 +25,7 @@ fun CityList(groupedCities: Map<String?, List<City>>) {
         groupedCities.forEach { (state, cities) ->
             item {
                 Text(
-                    state ?: "AU Cities",
+                    state ?: "Unknown State",
                     style = MaterialTheme.typography.headlineMedium,
                     modifier = Modifier
                         .padding(8.dp)
@@ -45,7 +45,7 @@ fun CityList(groupedCities: Map<String?, List<City>>) {
                         Text("Longitude: ${city.lng ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
                         Text("Country: ${city.country ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
                         Text("Population: ${city.population ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
-                        Text("Proper Population: ${city.populationProper ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
+                        Text("Proper Population: ${city.population_proper ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
                     }
                 }
             }

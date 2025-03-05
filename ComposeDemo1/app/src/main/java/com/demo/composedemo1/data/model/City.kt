@@ -9,5 +9,5 @@ data class City(
     val admin_name: String?,
     val capital: String?,
     val population: String?,
-    val populationProper: String?
+    val population_proper: String?
 )
