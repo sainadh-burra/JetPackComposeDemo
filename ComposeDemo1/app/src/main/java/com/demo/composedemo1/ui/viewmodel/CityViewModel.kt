@@ -4,20 +4,26 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.demo.composedemo1.data.model.City
 import com.demo.composedemo1.data.repository.CityRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CityViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository = CityRepository(application)
-    private val _cities = MutableLiveData<List<City>>()
+@HiltViewModel
+class CityViewModel @Inject constructor(application: Application, private val repository: CityRepository) : AndroidViewModel(application) {
+    val _cities = MutableLiveData<List<City>>()
     val cities: LiveData<List<City>> get() = _cities
 
     init {
         loadCities()
     }
 
-    private fun loadCities() {
-        _cities.value = repository.getCities()
+    fun loadCities() {
+        viewModelScope.launch {
+            _cities.value = repository.getCities()
+        }
     }
 
     fun reverseCities() {

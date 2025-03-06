@@ -20,6 +20,7 @@ fun CityList(groupedCities: Map<String?, List<City>>) {
         modifier = Modifier
             .padding(8.dp)
             .border(1.dp, Color.LightGray, RoundedCornerShape(4.dp))
+            .fillMaxWidth()
             .padding(8.dp)
     ) {
         groupedCities.forEach { (state, cities) ->
@@ -27,9 +28,11 @@ fun CityList(groupedCities: Map<String?, List<City>>) {
                 Text(
                     state ?: "Unknown State",
                     style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.primaryContainer,
                     modifier = Modifier
                         .padding(8.dp)
                         .border(1.dp, Color.Gray, RoundedCornerShape(4.dp))
+                        .fillMaxWidth()
                         .padding(8.dp)
                 )
                 cities.forEach { city ->
@@ -40,12 +43,12 @@ fun CityList(groupedCities: Map<String?, List<City>>) {
                             .fillMaxWidth()
                             .padding(8.dp)
                     ) {
-                        Text(city.city ?: "Unknown City", style = MaterialTheme.typography.bodyLarge)
-                        Text("Latitude: ${city.lat ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
-                        Text("Longitude: ${city.lng ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
-                        Text("Country: ${city.country ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
-                        Text("Population: ${city.population ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
-                        Text("Proper Population: ${city.population_proper ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
+                        Text(city.city ?: "Unknown City", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.primaryContainer)
+                        Text("Latitude: ${city.lat ?: "Unknown"}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondaryContainer)
+                        Text("Longitude: ${city.lng ?: "Unknown"}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondaryContainer)
+                        Text("Country: ${city.country ?: "Unknown"}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondaryContainer)
+                        Text("Population: ${city.population ?: "Unknown"}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondaryContainer)
+                        Text("Proper Population: ${city.population_proper ?: "Unknown"}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondaryContainer)
                     }
                 }
             }
